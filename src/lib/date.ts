@@ -35,6 +35,7 @@ export function describeDate(iso: string, timeZone: string): EventDate {
 }
 
 export const eventDate = describeDate(wedding.event.startsAt, wedding.event.timeZone);
+export const eventEnd = describeDate(wedding.event.endsAt, wedding.event.timeZone);
 
 /** ISO-строка для пункта программы: дата свадьбы + местное время "HH:MM". */
 export function scheduleTimeIso(time: string): string {

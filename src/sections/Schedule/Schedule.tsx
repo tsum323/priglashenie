@@ -2,13 +2,13 @@ import type { CSSProperties } from 'react';
 import { Section } from '../../components/Section/Section';
 import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
 import { wedding } from '../../data/wedding';
-import { scheduleTimeIso } from '../../lib/date';
+import { eventEnd, scheduleTimeIso } from '../../lib/date';
 import { mapUrl } from '../../lib/maps';
 import { keepLastWord } from '../../lib/typography';
 import styles from './Schedule.module.css';
 
 export function Schedule({ id }: { id: string }) {
-  const { schedule, sections } = wedding;
+  const { schedule, sections, texts } = wedding;
 
   return (
     <Section id={id}>
@@ -29,6 +29,11 @@ export function Schedule({ id }: { id: string }) {
               <h3 className={styles.title}>{item.title}</h3>
               <p className={styles.place}>{item.place.name}</p>
               {item.note && <p className={styles.note}>{item.note}</p>}
+              {index === schedule.length - 1 && (
+                <p className={styles.until}>
+                  {texts.scheduleUntil} <time dateTime={eventEnd.iso}>{eventEnd.time}</time>
+                </p>
+              )}
               {item.place.address && (
                 <a
                   className={styles.link}

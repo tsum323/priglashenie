@@ -62,6 +62,8 @@ export interface WeddingConfig {
     /** Короткая фраза первого экрана, по строке на элемент. */
     heroTagline: string[];
     heroCta: string;
+    /** Подпись к последнему пункту программы перед временем окончания. */
+    scheduleUntil: string;
     invitationBody: string[];
     /** Подпись под приглашением. */
     invitationSignature: string;

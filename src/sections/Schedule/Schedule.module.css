@@ -77,6 +77,13 @@
   color: var(--color-text-muted);
 }
 
+.until {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-style: italic;
+  font-variant-numeric: lining-nums;
+}
+
 .link {
   align-self: flex-start;
   display: inline-flex;
