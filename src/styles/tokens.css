@@ -1,0 +1,139 @@
+/*
+ * Дизайн-система: единственное место, где задаются цвета, шрифты, размеры,
+ * отступы, радиусы, линии и параметры анимаций. Компоненты используют только
+ * семантические переменные (--color-text, --space-6 и т. д.), а не сырые значения.
+ */
+
+:root {
+  /* ── Палитра ─────────────────────────────────────────────── */
+  --palette-milk: #f7f3ec;
+  --palette-beige: #e8ddcd;
+  --palette-gold: #a48760;
+  --palette-brown: #49382e;
+  --palette-brown-deep: #33271f;
+  --palette-taupe: #78695d;
+  --palette-line: #dcd1c2;
+  /* Затемнённые варианты для мелкого текста: контраст ≥ 4.5:1 */
+  --palette-gold-deep: #7d6342; /* 5.1:1 на молочном */
+  --palette-taupe-deep: #6e6054; /* 4.5:1 на бежевом */
+
+  /* ── Семантические цвета ─────────────────────────────────── */
+  --color-bg: var(--palette-milk);
+  --color-surface: var(--palette-beige);
+  --color-text: var(--palette-brown);
+  --color-text-muted: var(--palette-taupe); /* 4.8:1 на молочном */
+  --color-text-muted-on-surface: var(--palette-taupe-deep);
+  --color-text-inverse: var(--palette-milk);
+  /* Золото (3.1:1) — только для декора и крупного текста от 24px */
+  --color-accent: var(--palette-gold);
+  --color-accent-text: var(--palette-gold-deep);
+  --color-divider: var(--palette-line);
+  --color-focus: var(--palette-gold-deep);
+  --color-selection: var(--palette-beige);
+
+  /* ── Шрифты ──────────────────────────────────────────────── */
+  --font-serif:
+    'Cormorant Garamond', 'Cormorant', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Manrope', 'Helvetica Neue', 'Segoe UI', Roboto, Arial, system-ui, sans-serif;
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* ── Типографическая шкала (fluid, mobile-first) ─────────── */
+  --text-xs: 0.75rem; /* 12px — подписи капителью */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.06rem + 0.3vw, 1.3125rem);
+  --text-xl: clamp(1.375rem, 1.22rem + 0.7vw, 1.875rem);
+  --text-2xl: clamp(1.75rem, 1.45rem + 1.4vw, 2.75rem);
+  --text-3xl: clamp(2.25rem, 1.7rem + 2.6vw, 4rem);
+  --text-display: clamp(3.75rem, 1rem + 16vw, 8.5rem);
+  /* В двухколоночной раскладке имена делят ширину с фотографией. */
+  --text-display-split: clamp(5rem, 1rem + 8.5vw, 8.5rem);
+
+  --leading-tight: 0.92;
+  --leading-snug: 1.2;
+  --leading-normal: 1.6;
+
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-caps: 0.18em;
+  --tracking-caps-wide: 0.32em;
+
+  /* ── Отступы (шкала 4px) ─────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --gutter: clamp(1.25rem, 0.75rem + 2.5vw, 3rem);
+  --section-space: clamp(4.5rem, 3rem + 6vw, 9rem);
+
+  /* ── Ширина контента ─────────────────────────────────────── */
+  --container-max: 76rem;
+  --measure: 34rem; /* комфортная длина строки текста */
+  --measure-narrow: 24rem;
+
+  /* ── Радиусы ─────────────────────────────────────────────── */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-pill: 999px;
+  --radius-arch: 999px 999px 0 0;
+
+  /* ── Линии ───────────────────────────────────────────────── */
+  --line-width: 1px;
+  --border-hairline: var(--line-width) solid var(--color-divider);
+  --border-accent: var(--line-width) solid var(--color-accent);
+  --border-strong: var(--line-width) solid var(--color-text);
+
+  /* ── Кнопки ──────────────────────────────────────────────── */
+  --button-height: 3.25rem; /* 52px — больше минимальной зоны касания 44px */
+  --button-padding-x: var(--space-6);
+  --button-gap: var(--space-3);
+  --button-radius: var(--radius-pill);
+  --button-font-size: var(--text-xs);
+  --button-tracking: var(--tracking-caps);
+
+  --button-primary-bg: var(--palette-brown);
+  --button-primary-bg-hover: var(--palette-brown-deep);
+  --button-primary-fg: var(--color-text-inverse);
+  --button-ghost-bg-hover: var(--color-surface);
+  --button-ghost-border: var(--color-text);
+
+  /* ── Фокус ───────────────────────────────────────────────── */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 4px;
+
+  /* ── Движение ────────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 600ms;
+  --duration-reveal: 1100ms;
+  --reveal-distance: 1rem;
+  --reveal-step: 120ms;
+
+  /* ── Прочее ──────────────────────────────────────────────── */
+  --scroll-offset: var(--space-6);
+  --z-skip-link: 100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0.01ms;
+    --duration-base: 0.01ms;
+    --duration-slow: 0.01ms;
+    --duration-reveal: 0.01ms;
+    --reveal-distance: 0;
+    --reveal-step: 0ms;
+  }
+}

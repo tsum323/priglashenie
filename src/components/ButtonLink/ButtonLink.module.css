@@ -1,0 +1,70 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap);
+  min-height: var(--button-height);
+  padding-inline: var(--button-padding-x);
+  border: var(--line-width) solid transparent;
+  border-radius: var(--button-radius);
+  font-family: var(--font-sans);
+  font-size: var(--button-font-size);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--button-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.label {
+  /* Компенсация трекинга после последней буквы — визуальное центрирование. */
+  margin-right: calc(-1 * var(--button-tracking));
+}
+
+.icon {
+  display: inline-flex;
+  margin-left: var(--space-1);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.primary {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-fg);
+}
+
+.ghost {
+  background-color: transparent;
+  border-color: var(--button-ghost-border);
+  color: var(--color-text);
+}
+
+@media (hover: hover) {
+  .primary:hover {
+    background-color: var(--button-primary-bg-hover);
+  }
+
+  .ghost:hover {
+    background-color: var(--button-ghost-bg-hover);
+  }
+
+  .button:hover .icon {
+    transform: translateY(var(--space-1));
+  }
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
