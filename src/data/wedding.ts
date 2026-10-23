@@ -1,8 +1,13 @@
 import type { Place, WeddingConfig } from './types';
 
-const venue: Place = {
+const registryOffice: Place = {
   name: 'Екатерининский зал',
   address: 'Краснодар, Офицерская улица, 47',
+};
+
+const banquetHall: Place = {
+  name: 'Двин Холл',
+  address: 'Краснодар, Офицерская улица, 49',
 };
 
 /**
@@ -25,16 +30,13 @@ export const wedding: WeddingConfig = {
     city: 'Краснодар',
   },
 
-  venue,
-
   schedule: [
     {
       id: 'ceremony',
       time: '11:00',
-      title: 'Роспись',
-      note: 'Самый трогательный момент дня — услышать наше «да».',
-      // уточнить: какой именно ЗАГС и его адрес
-      place: { name: 'ЗАГС', address: null },
+      title: 'Встреча и роспись',
+      note: 'Собираемся в ЗАГСе, чтобы услышать наше «да».',
+      place: registryOffice,
     },
     {
       id: 'photos',
@@ -49,7 +51,7 @@ export const wedding: WeddingConfig = {
       time: '15:00',
       title: 'Банкет',
       note: 'Ужин, тосты, танцы и долгий тёплый вечер.',
-      place: venue,
+      place: banquetHall,
     },
   ],
 
@@ -74,7 +76,7 @@ export const wedding: WeddingConfig = {
     invitation: { eyebrow: 'Приглашение', title: 'Дорогие родные и друзья' },
     countdown: { eyebrow: 'До торжества', title: 'Осталось совсем немного' },
     schedule: { eyebrow: 'Программа дня', title: 'Как пройдёт наш день' },
-    venue: { eyebrow: 'Место', title: 'Где мы празднуем' },
+    venue: { eyebrow: 'Адреса', title: 'Где нас найти' },
     dressCode: { eyebrow: 'Дресс-код', title: 'Палитра вечера' },
     gifts: { eyebrow: 'Пожелания', title: 'О подарках' },
     gallery: { eyebrow: 'Мы', title: 'Немного о нас' },
@@ -88,15 +90,21 @@ export const wedding: WeddingConfig = {
     ],
   },
 
-  // уточнить: палитру дресс-кода
   dressCode: {
-    text: 'Будем рады, если в своих образах вы поддержите спокойную тёплую палитру нашего дня. Это не строгое правило — просто приятная деталь общей картины.',
+    text: 'Будем рады, если в своих образах вы выберете оттенки из этой палитры: нежные розовые, пудровые, персиковые и тёплые бежево-коричневые.',
     colors: [
-      { name: 'Молочный', hex: '#F3ECE1' },
-      { name: 'Песочный', hex: '#D9C6AA' },
-      { name: 'Карамельный', hex: '#A48760' },
-      { name: 'Оливковый', hex: '#7C7A5A' },
-      { name: 'Шоколадный', hex: '#4E3B30' },
+      { name: 'Нежно-розовый', hex: '#F5BEC3' },
+      { name: 'Жемчужный', hex: '#D9CFC5' },
+      { name: 'Розовый', hex: '#E78E9C' },
+      { name: 'Ванильный', hex: '#FAEAB6' },
+      { name: 'Персиковый', hex: '#FAD7C1' },
+      { name: 'Песочный', hex: '#D6B69C' },
+      { name: 'Пудровый', hex: '#F9DAEC' },
+      { name: 'Нюдовый', hex: '#CFB9AC' },
+      { name: 'Пионовый', hex: '#F5B0CF' },
+      { name: 'Мокко', hex: '#AB9089' },
+      { name: 'Какао', hex: '#967065' },
+      { name: 'Коралловый', hex: '#EB9B92' },
     ],
   },
 

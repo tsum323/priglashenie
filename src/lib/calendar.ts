@@ -12,8 +12,9 @@ function escapeIcs(text: string): string {
   return text.replace(/\\/g, '\\\\').replace(/;/g, '\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
 }
 
-const { event, venue, texts, schedule } = wedding;
-const location = venue.address ?? event.city;
+const { event, texts, schedule } = wedding;
+// Место сбора — первый пункт программы с адресом.
+const location = schedule.find((item) => item.place.address)?.place.address ?? event.city;
 const details = schedule
   .map((item) => `${item.time} — ${item.title}, ${item.place.name}`)
   .join('\n');

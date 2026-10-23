@@ -1,7 +1,16 @@
+.list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
 /* Двойная рамка — как оттиск на плотной бумаге; без теней и карточек. */
 .plate {
-  max-width: 40rem;
-  margin-inline: auto;
+  display: flex;
   padding: var(--frame-inset);
   border: var(--border-accent);
 }
@@ -10,6 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
   gap: var(--space-5);
   padding: var(--space-8) var(--space-5);
   border: var(--border-hairline);
@@ -38,7 +48,12 @@
 }
 
 @media (min-width: 48rem) {
+  .list {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    max-width: 64rem;
+  }
+
   .inner {
-    padding: var(--space-9) var(--space-8);
+    padding: var(--space-8) var(--space-6);
   }
 }

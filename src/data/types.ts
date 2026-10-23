@@ -56,7 +56,6 @@ export interface WeddingConfig {
     timeZone: string;
     city: string;
   };
-  venue: Place;
   schedule: ScheduleItem[];
   texts: {
     heroEyebrow: string;

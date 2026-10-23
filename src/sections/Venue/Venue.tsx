@@ -8,34 +8,43 @@ import { mapUrl } from '../../lib/maps';
 import { keepLastWord } from '../../lib/typography';
 import styles from './Venue.module.css';
 
+/** Площадки с известным адресом — по одной «табличке» на каждый пункт программы. */
 export function Venue({ id }: { id: string }) {
-  const { venue, schedule, sections } = wedding;
-  const venueItem = schedule.find((item) => item.place === venue);
+  const { schedule, sections } = wedding;
+  const places = schedule.filter((item) => item.place.address);
 
   return (
     <Section id={id}>
       <SectionHeading sectionId={id} text={sections.venue} ornament={false} />
-      <div className={styles.plate} data-reveal>
-        <div className={styles.inner}>
-          {venueItem && (
-            <p className={styles.when}>
-              {venueItem.title} ·{' '}
-              <time dateTime={scheduleTimeIso(venueItem.time)}>{venueItem.time}</time>
-            </p>
-          )}
-          <h3 className={styles.name}>{venue.name}</h3>
-          <Ornament />
-          {venue.address && (
-            <>
-              <address className={styles.address}>{keepLastWord(venue.address)}</address>
-              <ButtonLink href={mapUrl(venue.address)} target="_blank" rel="noopener noreferrer">
-                Открыть на карте
-                <span className="visually-hidden"> (Яндекс Карты, новая вкладка)</span>
-              </ButtonLink>
-            </>
-          )}
-        </div>
-      </div>
+      <ul className={styles.list}>
+        {places.map((item) => (
+          <li key={item.id} className={styles.plate} data-reveal>
+            <div className={styles.inner}>
+              <p className={styles.when}>
+                {item.title} · <time dateTime={scheduleTimeIso(item.time)}>{item.time}</time>
+              </p>
+              <h3 className={styles.name}>{item.place.name}</h3>
+              <Ornament />
+              {item.place.address && (
+                <>
+                  <address className={styles.address}>{keepLastWord(item.place.address)}</address>
+                  <ButtonLink
+                    href={mapUrl(item.place.address)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Открыть на карте
+                    <span className="visually-hidden">
+                      {' '}
+                      — {item.place.name} (Яндекс Карты, новая вкладка)
+                    </span>
+                  </ButtonLink>
+                </>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }
