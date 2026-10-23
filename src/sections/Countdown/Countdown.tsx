@@ -64,7 +64,7 @@ export function Countdown({ id }: { id: string }) {
           <span>начало в {eventDate.time}</span>
         </p>
         <div className={styles.actions}>
-          <ButtonLink variant="ghost" href={icsHref()} download="wedding-daniil-valeria.ics">
+          <ButtonLink variant="ghost" href={icsHref()}>
             Добавить в календарь
           </ButtonLink>
           <ButtonLink

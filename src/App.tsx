@@ -23,7 +23,7 @@ export function App() {
         <Masthead />
       </div>
       <main id="main" tabIndex={-1}>
-        <Hero nextSectionId={SECTION_IDS.invitation} />
+        <Hero />
         <Invitation id={SECTION_IDS.invitation} />
         <Countdown id={SECTION_IDS.countdown} />
         <Schedule id={SECTION_IDS.schedule} />

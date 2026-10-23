@@ -1,5 +1,6 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { buildIcs, ICS_FILE_NAME } from './src/lib/ics.ts';
 
 /**
  * Сайт публикуется на GitHub Pages по адресу вида
@@ -17,9 +18,26 @@ function normalizeBase(value: string | undefined): string {
   return trimmed ? `/${trimmed}/` : '/';
 }
 
+/** Публикует файл события календаря рядом с сайтом — данные берутся из src/data/wedding.ts. */
+function calendarFile(): Plugin {
+  return {
+    name: 'wedding-calendar-file',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (!req.url?.split('?')[0].endsWith(`/${ICS_FILE_NAME}`)) return next();
+        res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
+        res.end(buildIcs());
+      });
+    },
+    generateBundle() {
+      this.emitFile({ type: 'asset', fileName: ICS_FILE_NAME, source: buildIcs() });
+    },
+  };
+}
+
 export default defineConfig({
   base: normalizeBase(process.env.VITE_BASE_PATH),
-  plugins: [react()],
+  plugins: [react(), calendarFile()],
   build: {
     target: 'es2020',
     assetsInlineLimit: 0,

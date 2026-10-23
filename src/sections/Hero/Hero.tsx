@@ -1,18 +1,12 @@
 import type { CSSProperties } from 'react';
-import { ArrowDownIcon, ButtonLink } from '../../components/ButtonLink/ButtonLink';
 import { Portrait } from '../../components/Portrait/Portrait';
 import { wedding } from '../../data/wedding';
 import { eventDate } from '../../lib/date';
 import styles from './Hero.module.css';
 
-interface HeroProps {
-  /** id секции, к которой ведёт кнопка. */
-  nextSectionId: string;
-}
-
 const order = (n: number) => ({ '--reveal-order': n }) as CSSProperties;
 
-export function Hero({ nextSectionId }: HeroProps) {
+export function Hero() {
   const { couple, event, texts, photos } = wedding;
 
   return (
@@ -57,12 +51,6 @@ export function Hero({ nextSectionId }: HeroProps) {
               </span>
             ))}
           </p>
-
-          <div className={`reveal ${styles.actions}`} style={order(7)}>
-            <ButtonLink href={`#${nextSectionId}`} icon={<ArrowDownIcon />}>
-              {texts.heroCta}
-            </ButtonLink>
-          </div>
         </div>
 
         <div className={`reveal ${styles.visual}`} style={order(4)}>

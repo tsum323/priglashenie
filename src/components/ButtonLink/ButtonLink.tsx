@@ -30,11 +30,3 @@ export function ButtonLink({
     </a>
   );
 }
-
-export function ArrowDownIcon() {
-  return (
-    <svg width="12" height="16" viewBox="0 0 12 16" fill="none">
-      <path d="M6 1v13.5M1 9.5l5 5 5-5" stroke="currentColor" strokeWidth="1.2" />
-    </svg>
-  );
-}

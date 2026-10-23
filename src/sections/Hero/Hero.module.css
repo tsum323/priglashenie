@@ -122,15 +122,6 @@
   display: block;
 }
 
-.actions {
-  margin-top: var(--space-7);
-  width: 100%;
-}
-
-.actions > a {
-  width: 100%;
-}
-
 /* ── Арка и цветовое поле ──────────────────────────────────── */
 
 .visual {
@@ -152,16 +143,6 @@
 }
 
 /* ── Планшет ───────────────────────────────────────────────── */
-
-@media (min-width: 30rem) {
-  .actions {
-    width: auto;
-  }
-
-  .actions > a {
-    width: auto;
-  }
-}
 
 @media (min-width: 48rem) {
   .hero {
@@ -217,10 +198,6 @@
 
   .tagline {
     margin-top: var(--space-5);
-  }
-
-  .actions {
-    margin-top: var(--space-6);
   }
 
   .visual {

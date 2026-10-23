@@ -1,53 +1,20 @@
 import { wedding } from '../data/wedding';
+import { assetUrl } from './asset';
+import { calendarDetails, calendarLocation, ICS_FILE_NAME, toIcsUtc } from './ics';
 
-/** Дата в формате iCalendar в UTC: 20261208T080000Z. */
-function toIcsUtc(iso: string): string {
-  return new Date(iso)
-    .toISOString()
-    .replace(/[-:]/g, '')
-    .replace(/\.\d{3}/, '');
-}
-
-function escapeIcs(text: string): string {
-  return text.replace(/\\/g, '\\\\').replace(/;/g, '\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
-}
-
-const { event, texts, schedule } = wedding;
-// Место сбора — первый пункт программы с адресом.
-const location = schedule.find((item) => item.place.address)?.place.address ?? event.city;
-const details = schedule
-  .map((item) => `${item.time} — ${item.title}, ${item.place.name}`)
-  .join('\n');
-
-/** data:-ссылка на .ics-файл: работает без сервера. */
+/** Ссылка на wedding.ics, который генерируется при сборке (см. vite.config.ts). */
 export function icsHref(): string {
-  const ics = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//wedding-invitation//RU',
-    'CALSCALE:GREGORIAN',
-    'BEGIN:VEVENT',
-    `UID:${toIcsUtc(event.startsAt)}-wedding@invitation`,
-    `DTSTAMP:${toIcsUtc(event.startsAt)}`,
-    `DTSTART:${toIcsUtc(event.startsAt)}`,
-    `DTEND:${toIcsUtc(event.endsAt)}`,
-    `SUMMARY:${escapeIcs(texts.calendarTitle)}`,
-    `LOCATION:${escapeIcs(location)}`,
-    `DESCRIPTION:${escapeIcs(details)}`,
-    'END:VEVENT',
-    'END:VCALENDAR',
-  ].join('\r\n');
-
-  return `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
+  return assetUrl(ICS_FILE_NAME);
 }
 
 export function googleCalendarHref(): string {
+  const { event, texts } = wedding;
   const params = new URLSearchParams({
     action: 'TEMPLATE',
     text: texts.calendarTitle,
     dates: `${toIcsUtc(event.startsAt)}/${toIcsUtc(event.endsAt)}`,
-    location,
-    details,
+    location: calendarLocation,
+    details: calendarDetails,
     ctz: event.timeZone,
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;

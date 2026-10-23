@@ -57,7 +57,6 @@ export const wedding: WeddingConfig = {
   texts: {
     heroEyebrow: 'Приглашение на свадьбу',
     heroTagline: ['Один зимний день.', 'Одна история на двоих.', 'Начало нашей семьи.'],
-    heroCta: 'Открыть приглашение',
     scheduleUntil: 'Празднуем ориентировочно до',
     // уточнить: финальный текст приглашения
     invitationBody: [
