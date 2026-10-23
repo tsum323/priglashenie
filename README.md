@@ -7,9 +7,9 @@ Vite + React + TypeScript, CSS Modules, без серверной части.
 
 ```bash
 npm install       # установка зависимостей
-npm run dev       # локальная разработка: http://localhost:5173/-/
+npm run dev       # локальная разработка: http://localhost:5173/priglashenie/
 npm run build     # проверка типов и production-сборка в dist/
-npm run preview   # просмотр собранной версии: http://localhost:4173/-/
+npm run preview   # просмотр собранной версии: http://localhost:4173/priglashenie/
 ```
 
 ## Структура

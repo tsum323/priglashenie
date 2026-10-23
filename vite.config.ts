@@ -9,7 +9,7 @@ import react from '@vitejs/plugin-react';
  * (см. .github/workflows/deploy.yml). Локально используется значение
  * по умолчанию — имя текущего репозитория.
  */
-const DEFAULT_BASE = '/-/';
+const DEFAULT_BASE = '/priglashenie/';
 
 function normalizeBase(value: string | undefined): string {
   if (!value) return DEFAULT_BASE;
