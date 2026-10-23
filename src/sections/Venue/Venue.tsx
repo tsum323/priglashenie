@@ -5,6 +5,7 @@ import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
 import { wedding } from '../../data/wedding';
 import { scheduleTimeIso } from '../../lib/date';
 import { mapUrl } from '../../lib/maps';
+import { assetUrl } from '../../lib/asset';
 import { keepLastWord } from '../../lib/typography';
 import styles from './Venue.module.css';
 
@@ -20,6 +21,23 @@ export function Venue({ id }: { id: string }) {
         {places.map((item) => (
           <li key={item.id} className={styles.plate} data-reveal>
             <div className={styles.inner}>
+              {item.place.photos && item.place.photos.length > 0 && (
+                <div className={styles.photos} data-count={item.place.photos.length}>
+                  {item.place.photos.map((photo) => (
+                    <img
+                      key={photo.src}
+                      className={styles.photo}
+                      src={assetUrl(photo.src)}
+                      alt={photo.alt}
+                      width={photo.width}
+                      height={photo.height}
+                      loading="lazy"
+                      decoding="async"
+                      style={photo.focalPoint ? { objectPosition: photo.focalPoint } : undefined}
+                    />
+                  ))}
+                </div>
+              )}
               <p className={styles.when}>
                 {item.title} · <time dateTime={scheduleTimeIso(item.time)}>{item.time}</time>
               </p>

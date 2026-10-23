@@ -125,3 +125,125 @@
     padding-block: var(--space-7);
   }
 }
+
+/* ── Ботаника по краям ─────────────────────────────────────── */
+/*
+ * Mobile: свободные поля — по бокам от заголовка, от даты и под кнопками.
+ * Нижние отступы в rem: высота блока под датой постоянна, поэтому веточки
+ * у даты не наезжают на кнопки на любой ширине.
+ * Desktop: веточки уходят в широкие боковые поля.
+ */
+
+.flower {
+  position: absolute;
+  width: var(--flower-size, 6rem);
+  transform: rotate(var(--flower-rotate, 0deg)) scaleX(var(--flower-flip, 1));
+  opacity: 0.9;
+}
+
+.flowerA {
+  --flower-size: 6.5rem;
+  --flower-rotate: 22deg;
+  top: 0.75rem;
+  left: -0.75rem;
+}
+
+.flowerB {
+  --flower-size: 5.5rem;
+  --flower-rotate: -16deg;
+  top: 2.5rem;
+  right: -0.5rem;
+}
+
+.flowerC {
+  --flower-size: 5rem;
+  --flower-rotate: 150deg;
+  bottom: -3rem;
+  left: 0;
+}
+
+.flowerD {
+  --flower-size: 5.5rem;
+  --flower-rotate: 205deg;
+  --flower-flip: -1;
+  bottom: -3.25rem;
+  right: 0;
+}
+
+.flowerE {
+  --flower-size: 4.25rem;
+  --flower-rotate: 28deg;
+  bottom: 15.5rem;
+  left: -0.5rem;
+  opacity: 0.75;
+}
+
+.flowerF {
+  --flower-size: 4.5rem;
+  --flower-rotate: -145deg;
+  bottom: 15.25rem;
+  right: -0.75rem;
+  opacity: 0.75;
+}
+
+@media (max-width: 22.49rem) {
+  .flowerE {
+    --flower-size: 3.5rem;
+    left: -1rem;
+  }
+}
+
+/* Кнопки в одну строку — блок под датой ниже, веточки опускаются. */
+@media (min-width: 30rem) and (max-width: 63.99rem) {
+  .flowerE {
+    bottom: 10rem;
+  }
+
+  .flowerF {
+    bottom: 11rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .flowerA {
+    --flower-size: 9rem;
+    top: 1rem;
+    left: 4%;
+  }
+
+  .flowerB {
+    --flower-size: 7.5rem;
+    top: 3rem;
+    right: 6%;
+  }
+
+  .flowerC {
+    --flower-size: 8rem;
+    bottom: 0;
+    left: 9%;
+  }
+
+  .flowerD {
+    --flower-size: 8.5rem;
+    bottom: -1rem;
+    right: 3%;
+  }
+
+  .flowerE {
+    --flower-size: 6rem;
+    --flower-rotate: 32deg;
+    top: 46%;
+    bottom: auto;
+    left: 1.5%;
+    opacity: 0.6;
+  }
+
+  .flowerF {
+    --flower-size: 6.5rem;
+    --flower-rotate: -150deg;
+    top: 40%;
+    bottom: auto;
+    right: 2%;
+    opacity: 0.6;
+  }
+}

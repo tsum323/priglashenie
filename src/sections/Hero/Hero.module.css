@@ -126,6 +126,8 @@
 
 .visual {
   position: relative;
+  /* Цветовое поле (z-index: -1) остаётся над фоном раздела, но под аркой. */
+  isolation: isolate;
   width: min(82%, 22rem);
   justify-self: end;
 }

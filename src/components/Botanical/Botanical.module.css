@@ -1,0 +1,39 @@
+.botanical {
+  display: block;
+  pointer-events: none;
+}
+
+.botanical svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.line,
+.leaf,
+.petal,
+.heart {
+  stroke: var(--color-accent);
+  stroke-width: var(--botanical-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.line {
+  fill: none;
+}
+
+.leaf {
+  fill: var(--color-accent);
+  fill-opacity: 0.1;
+}
+
+.petal {
+  fill: var(--palette-milk);
+  fill-opacity: 0.75;
+}
+
+.heart {
+  fill: var(--color-accent);
+}

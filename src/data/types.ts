@@ -18,6 +18,8 @@ export interface Place {
   name: string;
   /** Полный адрес; null — пока не уточнён. */
   address: string | null;
+  /** Фотографии площадки для раздела адресов. */
+  photos?: Photo[];
 }
 
 export interface ScheduleItem {
@@ -91,6 +93,8 @@ export interface WeddingConfig {
   };
   photos: {
     hero: Photo | null;
+    /** Фото под подписью в разделе приглашения. */
+    invitation: Photo | null;
     /** Пустой список — раздел галереи не показывается. */
     gallery: Photo[];
   };

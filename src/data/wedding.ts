@@ -3,11 +3,35 @@ import type { Place, WeddingConfig } from './types';
 const registryOffice: Place = {
   name: 'Екатерининский зал',
   address: 'Краснодар, Офицерская улица, 47',
+  photos: [
+    {
+      src: 'photos/ekaterininsky-hall.webp',
+      alt: 'Фасад Екатерининского зала с арками и колоннами',
+      width: 960,
+      height: 1280,
+      focalPoint: '50% 40%',
+    },
+  ],
 };
 
 const banquetHall: Place = {
   name: 'Двин Холл',
   address: 'Краснодар, Офицерская улица, 49',
+  photos: [
+    {
+      src: 'photos/dvin-hall-entrance.webp',
+      alt: 'Вход в ресторан «Двин Холл» с золотой вывеской',
+      width: 910,
+      height: 720,
+      focalPoint: '50% 50%',
+    },
+    {
+      src: 'photos/dvin-hall-terrace.webp',
+      alt: 'Терраса «Двин Холл» с прозрачными куполами среди зелени',
+      width: 960,
+      height: 1280,
+    },
+  ],
 };
 
 /**
@@ -110,6 +134,13 @@ export const wedding: WeddingConfig = {
   photos: {
     // Пример: { src: 'photos/hero.webp', alt: 'Даниил и Валерия', width: 1600, height: 2000 }
     hero: null,
+    invitation: {
+      src: 'photos/couple.webp',
+      alt: 'Даниил и Валерия на деревянной веранде среди осенних деревьев',
+      width: 960,
+      height: 1280,
+      focalPoint: '50% 45%',
+    },
     gallery: [],
   },
 };

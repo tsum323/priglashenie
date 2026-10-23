@@ -1,3 +1,18 @@
 .section {
+  position: relative;
+  /* Цветовые поля и декор могут выходить за контейнер — но не за край экрана. */
+  overflow-x: clip;
   padding-block: var(--section-space);
+}
+
+/* Декор может выходить за края — обрезаем его границами раздела. */
+.decoration {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
 }

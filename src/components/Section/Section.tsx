@@ -10,6 +10,8 @@ interface SectionProps {
   children: ReactNode;
   className?: string;
   as?: 'section' | 'footer';
+  /** Декоративный слой под содержимым (например, ботаника по краям). */
+  decoration?: ReactNode;
 }
 
 /** Обёртка раздела: отступы, тон и связь с заголовком для экранных дикторов. */
@@ -19,6 +21,7 @@ export function Section({
   children,
   className,
   as: Tag = 'section',
+  decoration,
 }: SectionProps) {
   return (
     <Tag
@@ -28,7 +31,12 @@ export function Section({
       tabIndex={-1}
       className={[styles.section, className].filter(Boolean).join(' ')}
     >
-      <div className="container">{children}</div>
+      {decoration && (
+        <div className={styles.decoration} aria-hidden="true">
+          {decoration}
+        </div>
+      )}
+      <div className={`container ${styles.content}`}>{children}</div>
     </Tag>
   );
 }

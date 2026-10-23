@@ -130,6 +130,7 @@
   --ornament-diamond: 7px;
   --swatch-size: clamp(3.5rem, 3rem + 2vw, 4.75rem);
   --timeline-marker: 9px;
+  --botanical-stroke: 1px;
   --frame-inset: var(--space-2);
 
   /* ── Прочее ──────────────────────────────────────────────── */

@@ -1,10 +1,11 @@
+import { Portrait } from '../../components/Portrait/Portrait';
 import { Section } from '../../components/Section/Section';
 import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
 import { wedding } from '../../data/wedding';
 import styles from './Invitation.module.css';
 
 export function Invitation({ id }: { id: string }) {
-  const { texts, sections, couple } = wedding;
+  const { texts, sections, couple, photos } = wedding;
 
   return (
     <Section id={id}>
@@ -23,6 +24,11 @@ export function Invitation({ id }: { id: string }) {
           </span>
         </p>
       </div>
+      {photos.invitation && (
+        <div className={styles.photo} data-reveal>
+          <Portrait photo={photos.invitation} monogram={couple.monogram} />
+        </div>
+      )}
     </Section>
   );
 }

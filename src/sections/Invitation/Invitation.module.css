@@ -35,3 +35,29 @@
   font-weight: var(--weight-light);
   line-height: var(--leading-snug);
 }
+
+.photo {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 24rem);
+  margin: var(--space-8) auto 0;
+}
+
+/* Цветовое поле за аркой — тот же приём, что на первом экране. */
+.photo::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 22% -12% -6%;
+  background-color: var(--color-surface);
+}
+
+@media (min-width: 48rem) {
+  .photo {
+    margin-top: var(--space-9);
+  }
+
+  .photo::before {
+    inset: 22% -30% -8%;
+  }
+}

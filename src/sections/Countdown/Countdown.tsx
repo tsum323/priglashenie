@@ -1,3 +1,4 @@
+import { Botanical } from '../../components/Botanical/Botanical';
 import { ButtonLink } from '../../components/ButtonLink/ButtonLink';
 import { Section } from '../../components/Section/Section';
 import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
@@ -25,7 +26,7 @@ export function Countdown({ id }: { id: string }) {
   const summary = `До свадьбы ${parts.days} ${plural(parts.days, UNITS[0].forms)} ${parts.hours} ${plural(parts.hours, UNITS[1].forms)}`;
 
   return (
-    <Section id={id} tone="surface">
+    <Section id={id} tone="surface" decoration={<CountdownFlowers />}>
       <SectionHeading
         sectionId={id}
         text={
@@ -79,5 +80,19 @@ export function Countdown({ id }: { id: string }) {
         </div>
       </div>
     </Section>
+  );
+}
+
+/** Веточки по краям раздела — в «случайном» порядке, но с фиксированной раскладкой. */
+function CountdownFlowers() {
+  return (
+    <>
+      <Botanical variant="sprig" className={`${styles.flower} ${styles.flowerA}`} />
+      <Botanical variant="bloom" className={`${styles.flower} ${styles.flowerB}`} />
+      <Botanical variant="branch" className={`${styles.flower} ${styles.flowerC}`} />
+      <Botanical variant="sprig" className={`${styles.flower} ${styles.flowerD}`} />
+      <Botanical variant="bloom" className={`${styles.flower} ${styles.flowerE}`} />
+      <Botanical variant="branch" className={`${styles.flower} ${styles.flowerF}`} />
+    </>
   );
 }

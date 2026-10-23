@@ -6,7 +6,7 @@ interface PortraitProps {
   photo: Photo | null;
   /** Инициалы для типографической заглушки, пока фотографии нет. */
   monogram: [string, string];
-  caption: string;
+  caption?: string;
   className?: string;
   /** Главное изображение первого экрана загружается без lazy-loading. */
   priority?: boolean;
@@ -43,7 +43,7 @@ export function Portrait({ photo, monogram, caption, className, priority = false
           </div>
         )}
       </div>
-      <figcaption className={styles.caption}>{caption}</figcaption>
+      {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
     </figure>
   );
 }
