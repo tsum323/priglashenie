@@ -18,9 +18,10 @@ npm run preview   # просмотр собранной версии: http://loc
 src/
   data/        wedding.ts — все данные мероприятия; types.ts — их типы
   styles/      tokens.css — дизайн-система; base.css — сброс, типографика, утилиты
-  lib/         date.ts — форматирование даты; asset.ts — пути с учётом base path
-  components/  переиспользуемые элементы (ButtonLink, Portrait, Masthead)
-  sections/    разделы страницы (Hero, Invitation)
+  lib/         даты, пути с учётом base path, ссылки на карты и календарь, типографика
+  hooks/       useCountdown — таймер; useScrollReveal — появление при прокрутке
+  components/  ButtonLink, Portrait, Masthead, Section, SectionHeading, Ornament
+  sections/    Hero, Invitation, Countdown, Schedule, Venue, DressCode, Gifts, Gallery, Closing
 public/
   photos/      фотографии пары (подключаются через src/data/wedding.ts)
 ```
@@ -35,6 +36,7 @@ public/
    `hero: { src: 'photos/hero.webp', alt: 'Даниил и Валерия', width: 1600, height: 2000 }`.
 
 Арка первого экрана сама заменит типографическую заглушку на фотографию.
+Раздел галереи появится автоматически, как только `photos.gallery` станет непустым.
 
 ## Публикация на GitHub Pages
 

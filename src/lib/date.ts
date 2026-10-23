@@ -35,3 +35,28 @@ export function describeDate(iso: string, timeZone: string): EventDate {
 }
 
 export const eventDate = describeDate(wedding.event.startsAt, wedding.event.timeZone);
+
+/** ISO-строка для пункта программы: дата свадьбы + местное время "HH:MM". */
+export function scheduleTimeIso(time: string): string {
+  const [datePart, rest] = wedding.event.startsAt.split('T');
+  const offset = rest.match(/([+-]\d{2}:\d{2}|Z)$/)?.[0] ?? '';
+  return `${datePart}T${time}:00${offset}`;
+}
+
+const pluralRules = new Intl.PluralRules(LOCALE);
+
+/** Выбор формы слова: plural(5, ['день', 'дня', 'дней']) → «дней». */
+export function plural(n: number, [one, few, many]: [string, string, string]): string {
+  switch (pluralRules.select(n)) {
+    case 'one':
+      return one;
+    case 'few':
+      return few;
+    default:
+      return many;
+  }
+}
+
+export function capitalize(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}

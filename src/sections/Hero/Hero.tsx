@@ -16,7 +16,7 @@ export function Hero({ nextSectionId }: HeroProps) {
   const { couple, event, texts, photos } = wedding;
 
   return (
-    <section className={styles.hero} aria-labelledby="hero-title">
+    <section className={styles.hero} data-tone="default" aria-labelledby="hero-title">
       <div className={`container ${styles.grid}`}>
         <div className={styles.content}>
           <p className={`eyebrow reveal ${styles.eyebrow}`} style={order(1)}>

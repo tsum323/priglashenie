@@ -1,31 +1,28 @@
+import { Section } from '../../components/Section/Section';
+import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
 import { wedding } from '../../data/wedding';
 import styles from './Invitation.module.css';
 
-interface InvitationProps {
-  id: string;
-}
-
-/**
- * Предварительная версия раздела приглашения — цель кнопки первого экрана.
- * Полная реализация (таймер, программа, место, дресс-код, пожелания) — задание 2.
- */
-export function Invitation({ id }: InvitationProps) {
-  const { texts } = wedding;
+export function Invitation({ id }: { id: string }) {
+  const { texts, sections, couple } = wedding;
 
   return (
-    <section id={id} className={styles.invitation} aria-labelledby={`${id}-title`} tabIndex={-1}>
-      <div className={`container ${styles.inner}`}>
-        <p className="eyebrow">Приглашение</p>
-        <h2 id={`${id}-title`} className={styles.title}>
-          {texts.invitationTitle}
-        </h2>
-        <span className={styles.ornament} aria-hidden="true" />
+    <Section id={id}>
+      <SectionHeading sectionId={id} text={sections.invitation} />
+      <div className={styles.body} data-reveal>
         {texts.invitationBody.map((paragraph) => (
           <p key={paragraph} className={styles.text}>
             {paragraph}
           </p>
         ))}
+        <p className={styles.signature}>
+          <span className={styles.signatureLead}>{texts.invitationSignature}</span>
+          <span className={styles.signatureNames}>
+            {couple.groom.firstName} <span aria-hidden="true">&amp;</span>
+            <span className="visually-hidden">и</span> {couple.bride.firstName}
+          </span>
+        </p>
       </div>
-    </section>
+    </Section>
   );
 }

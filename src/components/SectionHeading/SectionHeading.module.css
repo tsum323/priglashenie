@@ -1,0 +1,31 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+.start {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.title {
+  max-width: 18ch;
+  font-size: var(--text-3xl);
+}
+
+.ornament {
+  margin-top: var(--space-3);
+}
+
+@media (min-width: 48rem) {
+  .heading {
+    margin-bottom: var(--space-8);
+  }
+}

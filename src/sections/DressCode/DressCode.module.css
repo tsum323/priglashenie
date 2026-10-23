@@ -1,0 +1,46 @@
+.text {
+  max-width: var(--measure);
+  margin-inline: auto;
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.palette {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-6) var(--space-3);
+  max-width: 40rem;
+  margin: var(--space-7) auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.color {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 6.5rem;
+}
+
+.swatch {
+  width: var(--swatch-size);
+  aspect-ratio: 1;
+  border-radius: var(--radius-pill);
+  background-color: var(--swatch-color);
+  /* Светлые оттенки не теряются на фоне благодаря тонкому кольцу. */
+  box-shadow:
+    0 0 0 var(--frame-inset) var(--color-bg),
+    0 0 0 calc(var(--frame-inset) + var(--line-width)) var(--color-divider);
+}
+
+.name {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-text-muted);
+}

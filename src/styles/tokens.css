@@ -16,6 +16,8 @@
   /* Затемнённые варианты для мелкого текста: контраст ≥ 4.5:1 */
   --palette-gold-deep: #7d6342; /* 5.1:1 на молочном */
   --palette-taupe-deep: #6e6054; /* 4.5:1 на бежевом */
+  --palette-gold-deeper: #6b5439; /* 5.3:1 на бежевом */
+  --palette-gold-light: #c9b08a; /* 5.3:1 на коричневом */
 
   /* ── Семантические цвета ─────────────────────────────────── */
   --color-bg: var(--palette-milk);
@@ -121,6 +123,13 @@
   --duration-reveal: 1100ms;
   --reveal-distance: 1rem;
   --reveal-step: 120ms;
+
+  /* ── Элементы разделов ───────────────────────────────────── */
+  --ornament-width: var(--space-9);
+  --ornament-diamond: 7px;
+  --swatch-size: clamp(3.5rem, 3rem + 2vw, 4.75rem);
+  --timeline-marker: 9px;
+  --frame-inset: var(--space-2);
 
   /* ── Прочее ──────────────────────────────────────────────── */
   --scroll-offset: var(--space-6);

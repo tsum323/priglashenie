@@ -1,0 +1,19 @@
+.ornament {
+  position: relative;
+  display: block;
+  width: var(--ornament-width);
+  height: var(--line-width);
+  background-color: var(--color-accent);
+}
+
+.ornament::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--ornament-diamond);
+  height: var(--ornament-diamond);
+  border: var(--border-accent);
+  background-color: var(--color-bg);
+  transform: translate(-50%, -50%) rotate(45deg);
+}

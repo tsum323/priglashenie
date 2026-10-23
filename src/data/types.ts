@@ -25,12 +25,19 @@ export interface ScheduleItem {
   /** Местное время в формате "HH:MM". */
   time: string;
   title: string;
+  /** Короткая подпись к пункту программы. */
+  note?: string;
   place: Place;
 }
 
 export interface DressCodeColor {
   name: string;
   hex: string;
+}
+
+export interface SectionText {
+  eyebrow: string;
+  title: string;
 }
 
 export interface WeddingConfig {
@@ -43,6 +50,8 @@ export interface WeddingConfig {
   event: {
     /** Начало свадебного дня в формате ISO 8601 со смещением часового пояса. */
     startsAt: string;
+    /** Окончание — используется для события в календаре гостя. */
+    endsAt: string;
     /** IANA-идентификатор часового пояса места проведения. */
     timeZone: string;
     city: string;
@@ -54,12 +63,27 @@ export interface WeddingConfig {
     /** Короткая фраза первого экрана, по строке на элемент. */
     heroTagline: string[];
     heroCta: string;
-    invitationTitle: string;
     invitationBody: string[];
+    /** Подпись под приглашением. */
+    invitationSignature: string;
+    /** Заголовок и текст вместо таймера, когда день свадьбы наступил. */
+    countdownAfterTitle: string;
+    countdownAfter: string;
+    calendarTitle: string;
+    closingTitle: string;
+    closingText: string;
+  };
+  sections: {
+    invitation: SectionText;
+    countdown: SectionText;
+    schedule: SectionText;
+    venue: SectionText;
+    dressCode: SectionText;
+    gifts: SectionText;
+    gallery: SectionText;
   };
   gifts: {
-    title: string;
-    text: string;
+    text: string[];
   };
   dressCode: {
     text: string;
@@ -67,6 +91,7 @@ export interface WeddingConfig {
   };
   photos: {
     hero: Photo | null;
+    /** Пустой список — раздел галереи не показывается. */
     gallery: Photo[];
   };
 }

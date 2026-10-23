@@ -1,47 +1,37 @@
-.invitation {
-  padding-block: var(--section-space);
-  border-top: var(--border-hairline);
-}
-
-.inner {
+.body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--space-4);
+  max-width: var(--measure);
+  margin-inline: auto;
   text-align: center;
 }
 
-.title {
-  max-width: 18ch;
-  margin-top: var(--space-4);
-  font-size: var(--text-3xl);
-}
-
-.ornament {
-  position: relative;
-  width: var(--space-9);
-  height: var(--line-width);
-  margin-block: var(--space-6);
-  background-color: var(--color-accent);
-}
-
-.ornament::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 7px;
-  height: 7px;
-  border: var(--border-accent);
-  background-color: var(--color-bg);
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
 .text {
-  max-width: var(--measure);
   font-size: var(--text-lg);
   color: var(--color-text-muted);
 }
 
-.text + .text {
-  margin-top: var(--space-4);
+.signature {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+.signatureLead {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+}
+
+.signatureNames {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-style: italic;
+  font-weight: var(--weight-light);
+  line-height: var(--leading-snug);
 }

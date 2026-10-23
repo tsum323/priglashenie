@@ -80,6 +80,45 @@ a {
   outline: none;
 }
 
+/* ── Тона разделов ─────────────────────────────────────────── */
+/*
+ * Раздел меняет тон, переопределяя семантические переменные, —
+ * компоненты внутри автоматически получают нужные цвета и контраст.
+ */
+
+[data-tone] {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+[data-tone='surface'] {
+  --color-bg: var(--palette-beige);
+  --color-text-muted: var(--palette-taupe-deep);
+  --color-accent-text: var(--palette-gold-deeper);
+  --color-divider: var(--palette-gold);
+  --color-focus: var(--palette-gold-deeper);
+  --button-ghost-bg-hover: var(--palette-milk);
+}
+
+[data-tone='inverse'] {
+  --color-bg: var(--palette-brown);
+  --color-text: var(--palette-milk);
+  --color-text-muted: var(--palette-beige);
+  --color-accent-text: var(--palette-gold-light);
+  --color-divider: rgb(232 221 205 / 0.22);
+  --color-focus: var(--palette-gold-light);
+  --color-selection: var(--palette-brown-deep);
+  --button-primary-bg: var(--palette-milk);
+  --button-primary-bg-hover: var(--palette-beige);
+  --button-primary-fg: var(--palette-brown);
+  --button-ghost-border: var(--palette-milk);
+  --button-ghost-bg-hover: var(--palette-brown-deep);
+}
+
+[data-tone='default'] + [data-tone='default'] {
+  border-top: var(--border-hairline);
+}
+
 /* ── Утилиты ───────────────────────────────────────────────── */
 
 .container {
@@ -157,5 +196,22 @@ a {
   .reveal {
     animation: reveal var(--duration-reveal) var(--ease-out) both;
     animation-delay: calc(var(--reveal-order, 0) * var(--reveal-step));
+  }
+}
+
+/* Появление разделов при прокрутке (см. useScrollReveal). */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal [data-reveal] {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance));
+    transition:
+      opacity var(--duration-reveal) var(--ease-out),
+      transform var(--duration-reveal) var(--ease-out);
+    transition-delay: calc(var(--reveal-order, 0) * var(--reveal-step));
+  }
+
+  .js-reveal [data-reveal][data-revealed] {
+    opacity: 1;
+    transform: none;
   }
 }
